@@ -5,7 +5,7 @@
 --%>
 
 <header>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="mainNavBar">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
            <li><a href="#">Home</a></li>
            <li><a href="#">All projects</a></li>
            <li><a href="#">My project</a></li>
