@@ -21,7 +21,7 @@
                 <div class="well">
                     <h4 class="bordboth4"><i class="fa fa-file-text"></i> New project</h4>
                     <p>Create new project and make it visible to customers.</p>
-                    <a class="btn btn-primary" href="#" target="_blank">New project</a>
+                    <a class="btn btn-primary" href="newproject">New project</a>
                 </div>
             </div>
           </div>
@@ -33,8 +33,8 @@
                   <div class="well">
                     <h4 class="bordboth4"><i class="fa fa-file-text"></i> Visibility of projects</h4>
                     <p>Make all projects visible/isnvisible to customers.</p>
-                    <a class="btn btn-primary" href="#" target="_blank">Make projects visible</a>
-                    <a class="btn btn-primary" href="#" target="_blank">Make projects invisible</a>
+                    <a class="btn btn-primary" href="#">Make projects visible</a>
+                    <a class="btn btn-primary" href="#">Make projects invisible</a>
                 </div>
             </div>
           </div>

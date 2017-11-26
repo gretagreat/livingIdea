@@ -41,9 +41,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <a class="btn btn-success" href="#" target="_blank">Save</a>
-                            <a class="btn btn-warning" href="#" target="_blank">Cancel</a>
-                            <a class="btn btn-danger" href="#" target="_blank">Delete</a>
+                            <a class="btn btn-success" href="#">Save</a>
+                            <a class="btn btn-warning" href="#">Cancel</a>
+                            <a class="btn btn-danger" href="#">Delete</a>
                         </div>
                     </div>
                                      

@@ -46,7 +46,7 @@
                             <form method="POST" action="addPhotos" enctype="multipart/form-data">
                                 <input type="text" name="name" class="form-control" id="photoName" placeholder="Name">
                                 <input type="file" accept="image/*" class="form-control" id="image" name="image" value="Upload photo">
-                                <a class="btn btn-primary" href="#" target="_blank">Upload</a>
+                                <a class="btn btn-primary" href="#">Upload</a>
                             </form>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <a class="btn btn-primary" href="#" target="_blank">New project</a>
+                    <a class="btn btn-primary" href="#">New project</a>
                 </div>
             </div>
         </div>          

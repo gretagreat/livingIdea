@@ -23,12 +23,12 @@
                 <form role="form">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="username" name="username" type="text" autofocus="">
+                            <input class="form-control" placeholder="username" name="username" type="text" autofocus="" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="password" name="password" type="password" value="">
+                            <input class="form-control" placeholder="password" name="password" type="password" value="" required>
                         </div>
-                        <a href="javascript:;" class="btn btn-sm btn-default">Login</a>
+                        <a href="admin" class="btn btn-sm btn-default">Login</a>
                     </fieldset>
                 </form>
             </div>
