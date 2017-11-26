@@ -1,11 +1,8 @@
-# Spring Boot Hello World Example with JSP
+# LivingIdea web application
 
-## Guide
-https://hellokoding.com/spring-boot-hello-world-example-with-jsp/
-
-## What you'll need
-- JDK 1.7 or later
-- Maven 3 or later
+## What is used
+- JDK 1.7 
+- Maven 4
 
 ## Stack
 - Spring Boot
