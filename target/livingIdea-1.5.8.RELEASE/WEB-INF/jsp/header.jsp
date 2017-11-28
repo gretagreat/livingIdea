@@ -13,15 +13,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">LivingIdea</a>
+          <a class="navbar-brand" href="home">Living iDea</a>
         </div>
 
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">All projects</a></li>
-           <li><a href="#">My project</a></li>
-           <li><a href="#">Info</a></li>
+           <li><a href="home">Home</a></li>
+           <li><a href="allprojects">All projects</a></li>
+           <li><a href="myproject">My project</a></li>
+           <li><a href="contact">Contact</a></li>
           </ul>
         </div>
       </div>

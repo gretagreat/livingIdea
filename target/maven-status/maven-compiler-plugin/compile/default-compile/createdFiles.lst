@@ -1,3 +1,4 @@
-livingIdea\LivingIdeaApplication.class
 livingIdea\ServletInitializer.class
 livingIdea\config\MvcConfig.class
+livingIdea\LivingIdeaApplication.class
+livingIdea\model\Project.class

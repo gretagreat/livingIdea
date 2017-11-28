@@ -12,7 +12,7 @@
 </head>
 
 <jsp:include page="header_admin.jsp"/>
-
+                       
 <div class="container">
     <form>
         <div class="row">
@@ -20,10 +20,13 @@
               <div class="row">
                 <div class="col-md-12">
                     <div class="well">
-                        <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Project</h4>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Projektas Sniegas" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Style</label>
+                            <input type="text" class="form-control" id="style" placeholder="Enter style" name="style">
                         </div>
                         <div class="form-group">
                             <label for="name">Cost</label>
@@ -66,7 +69,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <label>Place for photos with button delete on each photo</label>
+                    <jsp:include page="photos_inline.jsp"/>
                 </div>
             </div>
         </div>  

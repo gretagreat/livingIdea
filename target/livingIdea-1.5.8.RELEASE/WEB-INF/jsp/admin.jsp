@@ -51,6 +51,7 @@
                     <tr>
                         <th>Nr </th>
                         <th>Name </th>
+                        <th>Style </th>
                         <th> </th>
                         <th><a href="#">Date </a></th>
                         <th><a href="#">Visible </a></th>
@@ -58,6 +59,7 @@
                     <c:forEach var="project" items="${projects}">
                         <tr>
                             <td><a href="#"/></a></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

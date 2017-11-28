@@ -26,6 +26,10 @@
                             <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
                         </div>
                         <div class="form-group">
+                            <label for="name">Style</label>
+                            <input type="text" class="form-control" id="style" placeholder="Enter style" name="style">
+                        </div>
+                        <div class="form-group">
                             <label for="name">Cost</label>
                             <input type="text" class="form-control" id="cost" placeholder="Enter cost in Eur" name="cost">
                         </div>
