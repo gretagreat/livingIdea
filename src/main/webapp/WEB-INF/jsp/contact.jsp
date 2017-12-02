@@ -26,15 +26,15 @@
                                         <legend>Contact</legend>
                                         <div class="form-group">
                                             <label for="subject">Email * </label>
-                                            <input class="form-control" type="email" name="subject" placeholder="Email" value="${subj}"/>
+                                            <input class="form-control" type="email" name="subject" placeholder="Email" value="${email}"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Name and Surname * </label>
-                                            <input class="form-control" type="text" name="name" placeholder="Name and Surname" value="${from}"/>
+                                            <input class="form-control" type="text" name="name" placeholder="Name and Surname" value="${name}"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="message">Message * </label>
-                                            <textarea class="form-control" name="message" class="form-control" rows="3" placeholder="Message">${msg}</textarea>
+                                            <textarea class="form-control" name="message" rows="3" placeholder="Message">${msg}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <p> * These fields are required.</p>

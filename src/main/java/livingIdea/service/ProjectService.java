@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import livingIdea.model.Project;
-//import livingIdea.dao.ProjectRepository;
+import livingIdea.dao.ProjectRepository;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author greta
  */
-/*
+
 @Service
 @Transactional
 public class ProjectService {
@@ -61,4 +62,4 @@ public class ProjectService {
         }
         return visibleProjects;
     }
-}*/
+}

@@ -1,4 +1,11 @@
+livingIdea\config\WebSecurityConfig.class
 livingIdea\ServletInitializer.class
-livingIdea\config\MvcConfig.class
 livingIdea\LivingIdeaApplication.class
+livingIdea\controller\ProjectsController.class
+livingIdea\controller\AdminController.class
+livingIdea\dao\ProjectRepository.class
+livingIdea\service\ProjectService.class
+livingIdea\config\MvcConfig.class
+livingIdea\controller\ContactController.class
 livingIdea\model\Project.class
+livingIdea\controller\LoginController.class

@@ -18,8 +18,13 @@
 
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="admin">Settings</a></li>
-           <li><a href="login">Logout</a></li>
+            <li><a href="admin">Settings</a></li>
+            <li
+            <form action="/logout" method="post">
+                <button type="submit" >Logout</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+          </li>
           </ul>
         </div>
       </div>

@@ -25,11 +25,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
         registry.addViewController("/home").setViewName("home");
-        registry.addViewController("/admin").setViewName("admin");
-        registry.addViewController("/login").setViewName("login_admin");
-        registry.addViewController("/newproject").setViewName("project_new");
+        registry.addViewController("/login").setViewName("login");
         registry.addViewController("/editproject").setViewName("project_edit");
-        registry.addViewController("/allprojects").setViewName("project_all");
         registry.addViewController("/contact").setViewName("contact");
         registry.addViewController("/myproject").setViewName("project_my");
     }
@@ -38,5 +35,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/static/");
     }
+   
 
 }

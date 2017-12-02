@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <%-- 
     Document   : project_new
     Created on : Nov 26, 2017, 11:52:21 PM
@@ -14,27 +20,31 @@
 <jsp:include page="header_admin.jsp"/>
 
 <div class="container">
-    <form>
+    <form:form id="newproject" method="POST" action="newproject" commandName="project" modelAttibute="project">
         <div class="row">
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-12">
                     <div class="well">
                         <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Project</h4>
+                        <td><form:hidden path="id" /></td>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                            <form:input path="name" id="name" class="form-control" type="text" placeholder="Enter name" name="name" />
                         </div>
                         <div class="form-group">
-                            <label for="name">Style</label>
-                            <input type="text" class="form-control" id="style" placeholder="Enter style" name="style">
+                            <label for="style">Style</label>
+                            <form:input path="style" type="text" class="form-control" id="style" placeholder="Enter style" name="style" />
                         </div>
                         <div class="form-group">
-                            <label for="name">Cost</label>
-                            <input type="text" class="form-control" id="cost" placeholder="Enter cost in Eur" name="cost">
+                            <label for="price">Cost</label>
+                            <form:input path="price" type="text" class="form-control" id="cost" placeholder="Enter cost in Eur" name="cost" />
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="remember"> Make it visible to customers</label>
+                            <label>
+                                <input id="visibility" type="checkbox" name="visibleToCustomers" /> 
+                                Make it visible to customers
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -47,11 +57,11 @@
                       <div class="well">
                         <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Photos</h4>
                         <div class="form-group form-inline">
-                            <form method="POST" action="addPhotos" enctype="multipart/form-data">
+                            <!--form method="POST" action="addPhotos" enctype="multipart/form-data">
                                 <input type="text" name="name" class="form-control" id="photoName" placeholder="Name">
                                 <input type="file" accept="image/*" class="form-control" id="image" name="image" value="Upload photo">
                                 <a class="btn btn-primary" href="#">Upload</a>
-                            </form>
+                            </form-->
                         </div>
                     </div>
                 </div>
@@ -62,11 +72,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <a class="btn btn-primary" href="#">New project</a>
+                    <button type="submit" class="btn btn-primary">New project</button>
                 </div>
             </div>
         </div>          
-    </form>
+    </form:form>
 </div>
 
 <jsp:include page="footer.jsp"/>

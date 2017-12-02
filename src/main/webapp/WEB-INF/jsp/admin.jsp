@@ -3,16 +3,17 @@
     Created on : Nov 26, 2017, 10:05:44 PM
     Author     : greta
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <html>
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
+     <body>
 <jsp:include page="header_admin.jsp"/>                     
-    
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -49,21 +50,19 @@
                 <h4 class="bordboth4"><i class="fa fa-file-text"></i> All projects</h4>
                 <table class="table table-striped">
                     <tr>
-                        <th>Nr </th>
                         <th>Name </th>
                         <th>Style </th>
                         <th> </th>
-                        <th><a href="#">Date </a></th>
-                        <th><a href="#">Visible </a></th>
+                        <th>Date </th>
+                        <th>Visible </th>
                     </tr>
                     <c:forEach var="project" items="${projects}">
                         <tr>
-                            <td><a href="#"/></a></td>
+                            <td><a href="editproject&id=<c:out value="${project.id}"/>">${project.name}</a></td>
+                            <td>${project.style}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${project.date}</td>
+                            <td>${project.visibleToCustomers}</td>
                         </tr>
                     </c:forEach>
                 </table>           
@@ -73,5 +72,8 @@
 </div>
                                             
 <jsp:include page="footer.jsp"/>
+</body>
+ </html>
+
 
 

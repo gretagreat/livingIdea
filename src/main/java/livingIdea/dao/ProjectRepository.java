@@ -12,8 +12,8 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author greta
  */
-/*
+
 public interface ProjectRepository extends CrudRepository<Project, Long>{
     
 }
-*/
+

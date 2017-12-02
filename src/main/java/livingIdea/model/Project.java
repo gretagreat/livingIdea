@@ -42,6 +42,9 @@ public class Project implements Serializable {
     @Column 
     private String name;
     
+    @Column
+    private String style;
+    
     @Column 
     private Date date;
     
@@ -49,21 +52,42 @@ public class Project implements Serializable {
     private boolean visibleToCustomers;
     
     @Column 
-    private Currency price;
+    private float price;
     
     public Project(){
-        
+        this.date = new Date();
     }
     
-    public Project(String name, Date date, boolean visibleToCustomers){
+    public Project(String name, String style, Float price, boolean visibleToCustomers, Date date){
         this.name = name;
+        this.style = style;
+        this.price = price;
         this.date = date;
         this.visibleToCustomers = visibleToCustomers;
     }
     
-    public Project(Long id, String name, Date date, boolean visibleToCustomers){
+    public Project(Long id, String name, String style, Float price, boolean visibleToCustomers, Date date){
         this.name = name;
+        this.style = style;
+        this.price = price;
         this.date = date;
+        this.visibleToCustomers = visibleToCustomers;
+        this.id = id;
+    }
+    
+    public Project(String name, String style, Float price, boolean visibleToCustomers){
+        this.name = name;
+        this.style = style;
+        this.price = price;
+        this.date = new Date();
+        this.visibleToCustomers = visibleToCustomers;
+    }
+    
+    public Project(Long id, String name, String style, Float price, boolean visibleToCustomers){
+        this.name = name;
+        this.style = style;
+        this.price = price;
+        this.date = new Date();
         this.visibleToCustomers = visibleToCustomers;
         this.id = id;
     }
@@ -83,6 +107,14 @@ public class Project implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getStyle() {
+        return style;
+    }
+    
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
     public Date getDate() {
         return date;
@@ -100,11 +132,11 @@ public class Project implements Serializable {
         this.visibleToCustomers = visibleToCustomers;
     }
     
-    public Currency getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Currency price) {
+    public void setPrice(float price) {
         this.price = price;
     }
     

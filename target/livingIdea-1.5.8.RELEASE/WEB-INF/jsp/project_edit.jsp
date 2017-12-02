@@ -22,15 +22,15 @@
                     <div class="well">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Projektas Sniegas" name="name">
+                            <input type="text" class="form-control" id="name" value="${project.name}" name="name">
                         </div>
                         <div class="form-group">
                             <label for="name">Style</label>
-                            <input type="text" class="form-control" id="style" placeholder="Enter style" name="style">
+                            <input type="text" class="form-control" id="style" value="${project.style}" name="style">
                         </div>
                         <div class="form-group">
                             <label for="name">Cost</label>
-                            <input type="text" class="form-control" id="cost" placeholder="15 000" name="cost">
+                            <input type="text" class="form-control" id="cost" value="${project.price}" name="cost">
                         </div>
                         <div class="checkbox">
                             <label><input type="checkbox" name="remember"> Make it visible to customers</label>
@@ -45,7 +45,7 @@
                     <div class="col-md-12">
                         <div class="well">
                             <a class="btn btn-success" href="#">Save</a>
-                            <a class="btn btn-warning" href="#">Cancel</a>
+                            <a class="btn btn-warning" href="admin">Cancel</a>
                             <a class="btn btn-danger" href="#">Delete</a>
                         </div>
                     </div>
