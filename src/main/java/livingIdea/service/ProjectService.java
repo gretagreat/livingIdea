@@ -52,7 +52,7 @@ public class ProjectService {
 	repository.delete(projectId);
     }
     
-    public List<Project> visibleProjects() {
+    public List<Project> findVisibleProjects() {
         List<Project> projects = this.findAll();
         List<Project> visibleProjects = new ArrayList<>();
         
@@ -61,5 +61,33 @@ public class ProjectService {
                 visibleProjects.add(project);
         }
         return visibleProjects;
+    }
+
+    public void updateProject(Project project) {
+        this.save(project);
+    }
+    
+    public void makeVisibleProjects() {
+        List<Project> projects = this.findAll();
+        
+        for(Project project: projects) {
+            if(!project.getVisibleToCustomers()) 
+            {
+                project.setVisibleToCustomers(true);
+                updateProject(project);
+            }
+        }
+    }
+    
+    public void makeInvisibleProjects() {
+        List<Project> projects = this.findAll();
+        
+        for(Project project: projects) {
+            if(project.getVisibleToCustomers()) 
+            {
+                project.setVisibleToCustomers(false);
+                updateProject(project);
+            }
+        }
     }
 }

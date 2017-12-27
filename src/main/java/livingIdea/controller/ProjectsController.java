@@ -36,38 +36,9 @@ public class ProjectsController {
     @GetMapping("/allprojects")
     public ModelAndView getSpotsList() {
         ModelAndView model = new ModelAndView("project_all");
-        List<Project> projects = projectService.findAll();
+        List<Project> projects = projectService.findVisibleProjects();
         model.addObject("projects", projects);
         return model;
     }
-    
-    @GetMapping("/newproject")
-    public ModelAndView newProject() {        
-        ModelAndView modelAndView = new ModelAndView("project_new");
-        modelAndView.addObject("project", new Project());
-        return modelAndView;
-    }
-    
-    @PostMapping("/newproject")
-    public String newProject(@ModelAttribute("project") @Valid Project project, @RequestParam(value="visibility", required=false) String visibility, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws ServletException {  
-        boolean visibilityBool = false;
-        if(visibility != null){
-            visibilityBool = true;
-        }
-        if (bindingResult.hasErrors()) {
-            return "newproject";
-        } else {  
-            project.setVisibleToCustomers(visibilityBool);
-            projectService.save(project);
-            return "redirect:/admin";
-        }
-    }
-    
-    @GetMapping("/editproject&id={id}")
-    public ModelAndView editProject(@PathVariable Long id, RedirectAttributes redirectAttributes){
-        ModelAndView model = new ModelAndView("project_edit");
-        Project project = projectService.geProjectById(id);
-	model.addObject("project", project);
-        return model;
-    }
+   
 }

@@ -22,7 +22,7 @@
                 <div class="well">
                     <h4 class="bordboth4"><i class="fa fa-file-text"></i> New project</h4>
                     <p>Create new project and make it visible to customers.</p>
-                    <a class="btn btn-primary" href="newproject">New project</a>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/newproject">New project</a>
                 </div>
             </div>
           </div>
@@ -33,9 +33,9 @@
                 <div class="col-md-12">
                   <div class="well">
                     <h4 class="bordboth4"><i class="fa fa-file-text"></i> Visibility of projects</h4>
-                    <p>Make all projects visible/isnvisible to customers.</p>
-                    <a class="btn btn-primary" href="#">Make projects visible</a>
-                    <a class="btn btn-primary" href="#">Make projects invisible</a>
+                    <p>Make all projects visible/invisible to customers.</p>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/allprojectsvisible">Make projects visible</a>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/allprojectsinvisible">Make projects invisible</a>
                 </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
                     </tr>
                     <c:forEach var="project" items="${projects}">
                         <tr>
-                            <td><a href="editproject&id=<c:out value="${project.id}"/>">${project.name}</a></td>
+                            <td><a href="${pageContext.request.contextPath}/admin/project&id=${project.id}">${project.name}</a></td>
                             <td>${project.style}</td>
                             <td></td>
                             <td>${project.date}</td>

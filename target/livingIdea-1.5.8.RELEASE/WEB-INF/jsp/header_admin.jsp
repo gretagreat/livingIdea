@@ -13,12 +13,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home">Living iDea</a>
+          <a class="navbar-brand" href="redirect:/home">Living iDea</a>
         </div>
 
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="admin">Settings</a></li>
+            <li><a href="redirect:/admin">Settings</a></li>
             <li
             <form action="/logout" method="post">
                 <button type="submit" >Logout</button>

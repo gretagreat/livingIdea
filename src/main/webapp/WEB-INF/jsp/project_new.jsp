@@ -42,7 +42,7 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input id="visibility" type="checkbox" name="visibleToCustomers" /> 
+                                <form:checkbox id="visibility" name="visibility" path="visibleToCustomers" /> 
                                 Make it visible to customers
                             </label>
                         </div>
