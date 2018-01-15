@@ -5,11 +5,14 @@
  */
 package livingIdea.controller;
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.validation.Valid;
 import livingIdea.model.Project;
+import livingIdea.model.ProjectImage;
 import livingIdea.service.ProjectService;
+import livingIdea.service.ProjectImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +36,9 @@ public class AdminController {
 
     @Autowired
     private ProjectService projectService;
+    
+    @Autowired
+    private ProjectImageService projectImageService;
     
     @GetMapping()
     public ModelAndView getProjectsList() {
@@ -49,18 +56,17 @@ public class AdminController {
     }
     
     @PostMapping("/newproject")
-    public String newProject(@ModelAttribute("project") @Valid Project project, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws ServletException {  
-        if (bindingResult.hasErrors()) {
-            return "newproject";
-        } else {  
-            projectService.save(project);
-            return "redirect:/admin";
-        }
+    public ModelAndView newProject(@ModelAttribute("project") @Valid Project project, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws ServletException {  
+        projectService.save(project);
+        return this.editProject(project.getId());
     }
     
     @GetMapping("/project&id={id}")
     public ModelAndView editProject(@PathVariable Long id){
-        return new ModelAndView("project_edit", "project", projectService.geProjectById(id));
+        ModelAndView modelAndView = new ModelAndView("project_edit");
+        modelAndView.addObject("project",  projectService.getProjectById(id));
+        modelAndView.addObject("projectId",  id);
+        return modelAndView;
     }
     
     @PostMapping("/project&id={id}")
@@ -90,5 +96,13 @@ public class AdminController {
     public String invisible(){
         projectService.makeInvisibleProjects();
         return "redirect:/admin";
+    }
+    
+    @PostMapping("/uploadimage")
+    public String uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("projectId") Long projectId, @RequestParam("imagename") String name,
+            RedirectAttributes redirectAttributes) throws IOException {
+        ProjectImage projectImage = new ProjectImage(image.getBytes(), projectId, name);
+        projectImageService.save(projectImage);
+        return "redirect:/admin/project&id="+projectId;
     }
 }

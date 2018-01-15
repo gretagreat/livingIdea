@@ -9,14 +9,18 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -53,6 +57,9 @@ public class Project implements Serializable {
     
     @Column 
     private float price;
+    
+    //@OneToMany(mappedBy="project")
+    //private Set<ProjectImage> images = new HashSet<ProjectImage>();
     
     public Project(){
         this.date = new Date();
@@ -165,5 +172,19 @@ public class Project implements Serializable {
         return "livingIdea.model.Project[ id=" + id + " ]";
     }
     
+    /*public void setMenuItems(Set<ProjectImage> images){
+        this.images = images;
+    }
     
+    public Set<ProjectImage> getMenuItems(){
+        return images;
+    }
+    
+    public void addMenuItem(ProjectImage image){
+        this.images.add(image);
+    }
+    
+    public void deleteMenuItem(ProjectImage image){
+        this.images.remove(image);
+    }*/
 }

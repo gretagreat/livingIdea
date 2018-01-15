@@ -34,7 +34,7 @@ public class ProjectsController {
     private ProjectService projectService;
     
     @GetMapping("/allprojects")
-    public ModelAndView getSpotsList() {
+    public ModelAndView getProjectList() {
         ModelAndView model = new ModelAndView("project_all");
         List<Project> projects = projectService.findVisibleProjects();
         model.addObject("projects", projects);

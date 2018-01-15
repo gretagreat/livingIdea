@@ -40,7 +40,7 @@ public class ProjectService {
         return projects; 
     }
     
-    public Project geProjectById(long id) {
+    public Project getProjectById(long id) {
         return repository.findOne(id);
     }
     

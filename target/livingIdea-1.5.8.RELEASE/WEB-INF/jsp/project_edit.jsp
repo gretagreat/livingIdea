@@ -14,13 +14,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/photos_inline.css"></script>
 </head>
 
 <jsp:include page="header_admin.jsp"/>
                        
 <div class="container">
-    <form:form id="editproject" method="POST" commandName="project" action="project&id=${project.id}" modelAttibute="project">
+   
         <div class="row">
+            <form:form id="editproject" method="POST" commandName="project" action="project&id=${project.id}" modelAttibute="project">
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-12">
@@ -41,6 +43,7 @@
                         <div class="checkbox">
                             <label><form:checkbox path="visibleToCustomers" name="visibility" /> Make it visible to customers</label>
                         </div>
+                        
                     </div>
                 </div>
               </div>
@@ -54,32 +57,54 @@
                             <a class="btn btn-warning" href="<c:url value="cancel&id=${project.id}"/>">Cancel</a>
                             <a class="btn btn-danger" href="<c:url value="delete&id=${project.id}"/>">Delete</a>
                         </div>
-                    </div>
-                                     
+                    </div>     
+                </div>
+            </div>
+            </form:form>
+            
+            
+            <div class="col-md-6">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="well">
                             <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Photos</h4>
                             <div class="form-group form-inline">
-                                <!--form method="POST" action="addPhotos" enctype="multipart/form-data">
-                                    <input type="text" name="name" class="form-control" id="photoName" placeholder="Name">
-                                    <input type="file" accept="image/*" class="form-control" id="image" name="image" value="Upload photo">
-                                    <a class="btn btn-primary" href="#" target="_blank">Upload</a>
-                                </form-->
+                                <form method="POST" action="uploadimage" enctype="multipart/form-data">
+                                    <input type="text" name="imagename" class="form-control" id="imagename" placeholder="name">
+                                    <input type="file" accept="image/*" class="form-control" id="image" name="image" placeholder="Upload photo">
+                                    <input name="projectId" id="projectId" value="${projectId}" hidden>
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
+            
         </div>
         
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <jsp:include page="photos_inline.jsp"/>
+                    <div class="container">
+                        <div class="row">
+                           <div class="col-md-12">
+                               <div class="carousel slide multi-item-carousel" id="theCarousel">
+                                   <div class="carousel-inner">
+                                       <div class="item active">
+                                           <div class="col-xs-4"><a href="#1"><img src="${pageContext.request.contextPath}/images/office.jpg" class="img-responsive"></a></div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                               <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                           </div>
+                        </div>
+                    </div>      
                 </div>
             </div>
         </div>  
-    </form:form>
+    
 </div>
-
 <jsp:include page="footer.jsp"/>
+

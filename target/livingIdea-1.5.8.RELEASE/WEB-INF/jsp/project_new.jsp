@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="well">
                         <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Project</h4>
-                        <td><form:hidden path="id" /></td>
+                        <td><form:hidden path="id" name="projectId" /></td>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <form:input path="name" id="name" class="form-control" type="text" placeholder="Enter name" name="name" />
@@ -50,33 +50,17 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                      <div class="well">
-                        <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Photos</h4>
-                        <div class="form-group form-inline">
-                            <!--form method="POST" action="addPhotos" enctype="multipart/form-data">
-                                <input type="text" name="name" class="form-control" id="photoName" placeholder="Name">
-                                <input type="file" accept="image/*" class="form-control" id="image" name="image" value="Upload photo">
-                                <a class="btn btn-primary" href="#">Upload</a>
-                            </form-->
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        
-        <div class="row">
+        </div>   
+                                
+       <div class="row">
             <div class="col-md-6">
                 <div class="well">
                     <button type="submit" class="btn btn-primary">New project</button>
                 </div>
             </div>
-        </div>          
+        </div>     
     </form:form>
+    
 </div>
 
 <jsp:include page="footer.jsp"/>
