@@ -38,6 +38,9 @@ public class ProjectImage implements Serializable{
     @Column
     private byte[] image;
     
+    @Column
+    private float price;
+    
     public ProjectImage()
     {
         
@@ -56,6 +59,13 @@ public class ProjectImage implements Serializable{
         this.name = name;
     }
     
+    public ProjectImage(byte[] image, Long projectid, String name, float price)
+    {
+        this.image = image;
+        this.projectid = projectid;
+        this.name = name;
+        this.price = price;
+    }
     public ProjectImage(Long id, byte[] image, Long projectid, String name)
     {
         this.id = id;
@@ -100,5 +110,15 @@ public class ProjectImage implements Serializable{
     public String getName()
     {
         return this.name;
+    }
+    
+    public void setPrice(float price)
+    {
+        this.price = price;
+    }
+    
+    public float getPrice( )
+    {
+       return this.price;
     }
 }

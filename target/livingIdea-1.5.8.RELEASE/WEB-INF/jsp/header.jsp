@@ -21,7 +21,6 @@
            <li><a href="home">Home</a></li>
            <li><a href="allprojects">All projects</a></li>
            <li><a href="myproject">My project</a></li>
-           <li><a href="contact">Contact</a></li>
           </ul>
         </div>
       </div>

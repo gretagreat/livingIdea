@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login")).and().authorizeRequests()
-                        .antMatchers("/admin", "newproject", "editproject").hasRole("USER").and().formLogin().defaultSuccessUrl("/admin")
+                        .antMatchers("/admin", "/admin/**").hasRole("USER").and().formLogin().defaultSuccessUrl("/admin")
                         .loginPage("/login").and().logout().permitAll();
     }
     

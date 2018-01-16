@@ -5,12 +5,18 @@
  */
 package livingIdea.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 import livingIdea.model.Project;
 import livingIdea.dao.ProjectRepository;
 import javax.transaction.Transactional;
+import livingIdea.dao.ProjectImageRepository;
+import livingIdea.model.ProjectImage;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 /**
  *
@@ -22,9 +28,11 @@ import javax.transaction.Transactional;
 public class ProjectService {
 
     private final ProjectRepository repository;
+    private final ProjectImageRepository projectImageRepository;
 
-    public ProjectService(ProjectRepository repository) {
+    public ProjectService(ProjectRepository repository, ProjectImageRepository projectImageRepository) {
         this.repository = repository;
+        this.projectImageRepository = projectImageRepository;
     }
     
     public void save(Project project){
@@ -90,7 +98,7 @@ public class ProjectService {
         }
     }
     
-    public List<Project> findDistinctStyles(){
+    public List<Project> findDistinctStyles(){     
         List<Project> projects = this.findAll();
         List<Project> disctintStyleProjects = new ArrayList<>();
         boolean distinct;
@@ -115,4 +123,36 @@ public class ProjectService {
         }
         return disctintStyleProjects;  
     }
+    
+    public List<ProjectImage> findAllByStyle(String style) {
+        List<ProjectImage> images = new ArrayList<>();
+        for(ProjectImage image: projectImageRepository.findAll()) {
+            if(repository.findOne(image.getProjectid()).getStyle().equals(style))
+                images.add(image);
+	}
+        return images; 
+    }
+    
+    public List<String> findAllStyleImages(String style) {
+        List<String> imagesList = new ArrayList<>();
+        for(ProjectImage image: this.findAllByStyle(style)) {
+            try {
+                imagesList.add(new String(Base64.encodeBase64(image.getImage()), "UTF-8"));
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(ProjectImageService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return imagesList; 
+    }
+    
+    public List<Project> findSameStyles(String style) {
+        List<Project> projects = this.findAll();
+        List<Project> sameStyles = new ArrayList<>();
+        
+        for(Project project: projects) {
+            if(project.getStyle().equals(style)) 
+                sameStyles.add(project);
+        }
+        return sameStyles;
+    } 
 }

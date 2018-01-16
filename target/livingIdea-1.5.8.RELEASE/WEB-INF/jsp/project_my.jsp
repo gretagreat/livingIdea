@@ -27,17 +27,11 @@
                     <div class="well">
                         <div class="form-group">
                             <label for="name">Style</label>
-                            <c:forEach var="project" items="${projects}">
-                            
-                                  <div class="radio">
-                                <label><input type="radio" name="optradio" value="${project.price}">${project.style}</label>
-                            </div>
-                            
-                            </c:forEach>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Bohemian</label>
-                            </div>
-                 
+                            <c:forEach var="project" items="${projects}">                         
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio" value="${project.id}" required>${project.style}</label>
+                                </div>
+                            </c:forEach>      
                         </div>
                     </div>
                 </div>
@@ -48,28 +42,50 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <button type="submit" class="btn btn-success">Generate price</buttton>                         
+                             Enter your room space(m2) <input type="number" min="0" name="space" class="form-control" required/>
                         </div>                       
                     </div>
                                      
                     <div class="col-md-12">
                         <div class="well">
-                           Enter your room space(m2) <input type="number" name="space" class="form-control"/>
+                          <button type="submit" class="btn btn-success">Generate price</buttton>  
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <jsp:include page="photos_inline_mix.jsp"/>
-                </div>
-            </div>
-        </div>  
+
     </form>
 </div>
+        
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <div class="container">
+                <div class="row">
+                   <div class="col-md-12">
+                       <div class="carousel slide multi-item-carousel" id="theCarousel">
+                           <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-xs-4"><a href="#1"><img src="${pageContext.request.contextPath}/images/photos.jpg" class="img-responsive"></a></div>
+                                </div>
+                                <c:if test="${not empty images_lists}">
+                                    <c:forEach items="${images_lists}" var="image">
+                                        <div class="item ">
+                                            <div class="col-xs-4"><a href="#1"><img src="data:image/jpg;base64,${image}" alt="No image"></a></div>
+                                        </div>                      
+                                    </c:forEach>
+                                </c:if>    
+                           </div>
+                       </div>
+                       <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                       <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                   </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+</div>  
 
 <jsp:include page="footer.jsp"/>
 

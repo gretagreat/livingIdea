@@ -6,9 +6,11 @@
 package livingIdea.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import livingIdea.model.Project;
+import livingIdea.model.ProjectImage;
 import livingIdea.service.ProjectImageService;
 import livingIdea.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +36,15 @@ public class ProjectsController {
     @Autowired
     private ProjectImageService projectImageService;
     
+    @GetMapping("/home")
+    public ModelAndView getProjectStyles() throws UnsupportedEncodingException{       
+        ModelAndView model = new ModelAndView("home");
+        model.addObject("images_lists", projectImageService.getImages());  
+        return model;
+    }
+    
     @GetMapping("/allprojects")
-    public ModelAndView getProjectList() {
-        projectService.save(new Project("name","modernas", 50f, true));
-        projectService.save(new Project("labas","klasikinis", 60f, true));
-        projectService.save(new Project("laba diena","klasikinis", 6090f, true));
-        
+    public ModelAndView getProjectList() { 
         ModelAndView model = new ModelAndView("project_all");
         List<Project> projects = projectService.findVisibleProjects();
         model.addObject("projects", projects);
@@ -60,11 +65,13 @@ public class ProjectsController {
         ModelAndView model = new ModelAndView("project_my");
         List<Project> projects = projectService.findDistinctStyles();
         model.addObject("projects", projects);
+        model.addObject("images_lists", projectImageService.getImages());  
         return model;
     }
     
     /**
      *
+     * @param id
      * @param price
      * @param space
      * @param redirectAttributes
@@ -72,10 +79,39 @@ public class ProjectsController {
      * @throws ServletException
      */
     @PostMapping("/showmyproject")
-        public ModelAndView showMyProject(@RequestParam("optradio") Float price, @RequestParam("space") double space, RedirectAttributes redirectAttributes) throws ServletException {  
+    public ModelAndView showMyProject(@RequestParam("optradio") int id, @RequestParam("space") double space, RedirectAttributes redirectAttributes) throws ServletException {  
         ModelAndView model = new ModelAndView("project_showmy");
-          model.addObject("totalprice",  price*space);
-        return model ;
+        List<ProjectImage> projectimages = null;    
+        Float price = null;
+        String style=projectService.getProjectById(id).getStyle();
+        List<Project> projectPrices = projectService.findSameStyles(style);
+        for(Project project : projectPrices){
+            if (price==null){
+               price=project.getPrice();
+            }
+            else
+                price=(project.getPrice()+price)/2;
         }
+        projectimages = projectService.findAllByStyle(style);
+        model.addObject("totalprice",  price*space);
+        model.addObject("images",projectimages);
+        model.addObject("images_lists", projectService.findAllStyleImages(style));
+        return model ;
+    }
+        
+        
+    @PostMapping("/showmyfurniture")
+    public ModelAndView showMyFurniture(@RequestParam("furniture") int[] checkboxValue, RedirectAttributes redirectAttributes) throws ServletException {  
+        ModelAndView model = new ModelAndView("project_furniture");
+        float price=0;
+        for(int id : checkboxValue)
+        {
+            price+=  projectImageService.getProjectImageById(id).getPrice();
+        }
+        model.addObject("price",price);
+        model.addObject("furnitureId", checkboxValue);
+        model.addObject("images_lists", projectImageService.getImages());  
+        return model ;
+    }
    
 }

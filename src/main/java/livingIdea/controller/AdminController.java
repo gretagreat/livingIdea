@@ -102,9 +102,9 @@ public class AdminController {
     }
     
     @PostMapping("/uploadimage")
-    public String uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("projectId") Long projectId, @RequestParam("imagename") String name,
-            RedirectAttributes redirectAttributes) throws IOException {
-        ProjectImage projectImage = new ProjectImage(image.getBytes(), projectId, name);
+    public String uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("projectId") Long projectId, @RequestParam("imagename") String name, 
+        @RequestParam("price") float price, RedirectAttributes redirectAttributes) throws IOException {
+        ProjectImage projectImage = new ProjectImage(image.getBytes(), projectId, name, price);
         projectImageService.save(projectImage);
         
         return "redirect:/admin/project&id="+projectId;

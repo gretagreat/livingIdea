@@ -30,15 +30,15 @@
                         <td><form:hidden path="id" name="projectId" /></td>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <form:input path="name" id="name" class="form-control" type="text" placeholder="Enter name" name="name" />
+                            <form:input path="name" id="name" class="form-control" type="text" placeholder="Enter name" name="name" required="true"/>
                         </div>
                         <div class="form-group">
                             <label for="style">Style</label>
-                            <form:input path="style" type="text" class="form-control" id="style" placeholder="Enter style" name="style" />
+                            <form:input path="style" type="text" class="form-control" id="style" placeholder="Enter style" name="style" required="true"/>
                         </div>
                         <div class="form-group">
                             <label for="price">Cost</label>
-                            <form:input path="price" type="text" class="form-control" id="cost" placeholder="Enter cost in Eur" name="cost" />
+                            <form:input path="price" type="number" min="0" class="form-control" id="cost" placeholder="Enter cost in Eur" name="cost" />
                         </div>
                         <div class="checkbox">
                             <label>

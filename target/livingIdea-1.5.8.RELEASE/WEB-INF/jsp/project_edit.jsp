@@ -31,15 +31,15 @@
                         <form:hidden path="id" id="id"/>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <form:input type="text" class="form-control" id="name" path="name" />
+                            <form:input type="text" class="form-control" id="name" path="name" required="true"/>
                         </div>
                         <div class="form-group">
                             <label for="name">Style</label>
-                            <form:input type="text" class="form-control" id="style" path="style" />
+                            <form:input type="text" class="form-control" id="style" path="style" required="true"/>
                         </div>
                         <div class="form-group">
                             <label for="name">Cost</label>
-                            <form:input type="text" class="form-control" id="cost" path="price" />
+                            <form:input type="number" min="0" class="form-control" id="cost" path="price" />
                         </div>
                         <div class="checkbox">
                             <label><form:checkbox path="visibleToCustomers" name="visibility" /> Make it visible to customers</label>
@@ -67,11 +67,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Photos</h4>
+                            <h4 class="bordboth4"><i class="fa fa-map-marker"></i> Photo of furniture</h4>
                             <div class="form-group form-inline">
                                 <form method="POST" action="uploadimage" enctype="multipart/form-data">
-                                    <input type="text" name="imagename" class="form-control" id="imagename" placeholder="name">
-                                    <input type="file" accept="image/*" class="form-control" id="image" name="image" placeholder="Upload photo">
+                                    <input type="text" name="imagename" class="form-control" id="imagename" placeholder="name" required>
+                                    <input type="number" min="0" name="price" class="form-control" id="price" placeholder="price" required>
+                                    <input type="file" accept="image/*" class="form-control" id="image" name="image" placeholder="Upload photo" required>
                                     <input name="projectId" id="projectId" value="${projectId}" hidden>
                                     <button type="submit" class="btn btn-primary">Upload</button>
                                 </form>

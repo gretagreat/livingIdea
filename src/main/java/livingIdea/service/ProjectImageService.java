@@ -70,6 +70,20 @@ public class ProjectImageService {
         return images; 
     }
     
+    public List<String> getImages() {
+        List<String> images = new ArrayList<>();
+        for(ProjectImage image: repository.findAll()) {
+            if(projectRepository.findOne(image.getProjectid()).getVisibleToCustomers()){
+                try {
+                    images.add(new String(Base64.encodeBase64(image.getImage()), "UTF-8"));
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(ProjectImageService.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return images; 
+    }
+    
     public void delete(ProjectImage image){
         repository.delete(image);
     }
@@ -80,14 +94,6 @@ public class ProjectImageService {
                repository.delete(image);
 	}
     }
-    
-    public List<ProjectImage> findAllByStyle(String style) {
-        List<ProjectImage> images = new ArrayList<>();
-        for(ProjectImage image: repository.findAll()) {
-            if(projectRepository.findOne(image.getProjectid()).getStyle().equals(style))
-                images.add(image);
-	}
-        return images; 
-    }
+   
     
 }
