@@ -6,6 +6,7 @@
 package livingIdea.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.validation.Valid;
@@ -56,16 +57,17 @@ public class AdminController {
     }
     
     @PostMapping("/newproject")
-    public ModelAndView newProject(@ModelAttribute("project") @Valid Project project, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws ServletException {  
+    public ModelAndView newProject(@ModelAttribute("project") @Valid Project project, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws ServletException, UnsupportedEncodingException {  
         projectService.save(project);
         return this.editProject(project.getId());
     }
     
     @GetMapping("/project&id={id}")
-    public ModelAndView editProject(@PathVariable Long id){
+    public ModelAndView editProject(@PathVariable Long id) throws UnsupportedEncodingException{
         ModelAndView modelAndView = new ModelAndView("project_edit");
-        modelAndView.addObject("project",  projectService.getProjectById(id));
-        modelAndView.addObject("projectId",  id);
+        modelAndView.addObject("project", projectService.getProjectById(id));
+        modelAndView.addObject("projectId", id);
+        modelAndView.addObject("images_lists", projectImageService.getImagesByProjectId(id));       
         return modelAndView;
     }
     
@@ -78,6 +80,7 @@ public class AdminController {
     @GetMapping("/delete&id={id}")
     public String deleteProject(@PathVariable Long id){
         projectService.deleteProjectById(id);
+        projectImageService.deleteByProjectId(id);
         return "redirect:/admin";
     }
     
@@ -103,6 +106,8 @@ public class AdminController {
             RedirectAttributes redirectAttributes) throws IOException {
         ProjectImage projectImage = new ProjectImage(image.getBytes(), projectId, name);
         projectImageService.save(projectImage);
+        
         return "redirect:/admin/project&id="+projectId;
     }
+   
 }

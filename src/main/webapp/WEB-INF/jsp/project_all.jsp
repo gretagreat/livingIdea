@@ -15,7 +15,6 @@
     <jsp:include page="header.jsp"/>
        
     <div class="container">
-        <c:forEach var="project" items="${projects}">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -25,19 +24,21 @@
                                     <tr>
                                         <th>Name </th>
                                         <th>Style </th>
+                                        <th>Price </th>
                                     </tr>
-                                    <tr>
-                                        <td>${project.name}</td>
-                                        <td>${project.style}</td>
-                                    </tr>
+                                    <c:forEach var="project" items="${projects}">
+                                        <tr>
+                                            <td><a href="${pageContext.request.contextPath}/project&id=${project.id}">${project.name}</a></td>
+                                            <td>${project.style}</td>
+                                            <td>${project.price}</td>
+                                        </tr>
+                                    </c:forEach> 
                                 </table>                                   
-                                <jsp:include page="photos_inline.jsp"/>
                             </div>
                         </div>
                     </div>
                 </div>  
-            </div>
-        </c:forEach>          
+            </div>    
     </div>  
     <jsp:include page="footer.jsp"/> 
 </body>

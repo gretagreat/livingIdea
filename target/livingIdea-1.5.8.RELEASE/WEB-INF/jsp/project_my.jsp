@@ -3,6 +3,11 @@
     Created on : Nov 28, 2017, 12:57:22 AM
     Author     : greta
 --%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -12,9 +17,9 @@
 </head>
 
 <jsp:include page="header.jsp"/>
-                       
+
 <div class="container">
-    <form>
+    <form  action="${pageContext.request.contextPath}/showmyproject" method="post">
         <div class="row">
             <div class="col-md-6">
               <div class="row">
@@ -22,24 +27,17 @@
                     <div class="well">
                         <div class="form-group">
                             <label for="name">Style</label>
+                            <c:forEach var="project" items="${projects}">
+                            
+                                  <div class="radio">
+                                <label><input type="radio" name="optradio" value="${project.price}">${project.style}</label>
+                            </div>
+                            
+                            </c:forEach>
                             <div class="radio">
                                 <label><input type="radio" name="optradio">Bohemian</label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Farmhouse</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" disabled>Industrial</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio" disabled>Nautical</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio" disabled>Modern</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" disabled>Scandinavian</label>
-                            </div>
+                 
                         </div>
                     </div>
                 </div>
@@ -50,13 +48,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <a class="btn btn-success" href="#">Generate price</a>                         
+                            <button type="submit" class="btn btn-success">Generate price</buttton>                         
                         </div>                       
                     </div>
                                      
                     <div class="col-md-12">
                         <div class="well">
-                            <h2>0 Eur</h2>
+                           Enter your room space(m2) <input type="number" name="space" class="form-control"/>
                         </div>
                     </div>
                 </div>

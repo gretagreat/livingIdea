@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import livingIdea.model.Project;
 import livingIdea.dao.ProjectRepository;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -89,5 +88,31 @@ public class ProjectService {
                 updateProject(project);
             }
         }
+    }
+    
+    public List<Project> findDistinctStyles(){
+        List<Project> projects = this.findAll();
+        List<Project> disctintStyleProjects = new ArrayList<>();
+        boolean distinct;
+        for(Project project: projects) {
+            distinct=false;
+            if( disctintStyleProjects.isEmpty()) {
+                disctintStyleProjects.add(project);
+            } else {
+                for(Project distinctproject: disctintStyleProjects) {
+                    if (project.getStyle().equals(distinctproject.getStyle())){
+                        distinct=false;
+                        break;
+                    }
+                    else {
+                        distinct=true;
+                    }
+                }
+                if (distinct==true){
+                    disctintStyleProjects.add(project);
+                } 
+            }
+        }
+        return disctintStyleProjects;  
     }
 }

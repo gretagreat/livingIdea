@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home_style.css">
     <script src="${pageContext.request.contextPath}/js/photos_inline.css"></script>
 </head>
 
@@ -42,8 +43,7 @@
                         </div>
                         <div class="checkbox">
                             <label><form:checkbox path="visibleToCustomers" name="visibility" /> Make it visible to customers</label>
-                        </div>
-                        
+                        </div>  
                     </div>
                 </div>
               </div>
@@ -91,9 +91,16 @@
                            <div class="col-md-12">
                                <div class="carousel slide multi-item-carousel" id="theCarousel">
                                    <div class="carousel-inner">
-                                       <div class="item active">
-                                           <div class="col-xs-4"><a href="#1"><img src="${pageContext.request.contextPath}/images/office.jpg" class="img-responsive"></a></div>
-                                       </div>
+                                        <div class="item active">
+                                            <div class="col-xs-4"><a href="#1"><img src="${pageContext.request.contextPath}/images/photos.jpg" class="img-responsive"></a></div>
+                                        </div>
+                                        <c:if test="${not empty images_lists}">
+                                            <c:forEach items="${images_lists}" var="image">
+                                                <div class="item ">
+                                                    <div class="col-xs-4"><a href="#1"><img src="data:image/jpg;base64,${image}" alt="No image"></a></div>
+                                                </div>                      
+                                            </c:forEach>
+                                        </c:if>    
                                    </div>
                                </div>
                                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
