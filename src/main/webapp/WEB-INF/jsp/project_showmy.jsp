@@ -20,8 +20,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>My project</title>
     </head>
-  
-    <body>
+    
+    <body>        
         <jsp:include page="header.jsp"/>
     
         <div class="col-md-12">
@@ -37,7 +37,10 @@
                             <label for="name">Choose the furniture you want:</label>
                                 <c:forEach var="image" items="${images}">
                                     <div class="checkbox ">
-                                        <label>  <input type="checkbox"  name="furniture" value="${image.id}" required>${image.name}</label>
+                                        <label>  
+                                            <input type="checkbox"  name="furniture" value="${image.id}" required>
+                                            ${image.name}
+                                        </label>
                                     </div>
                                 </c:forEach>
                         </div>

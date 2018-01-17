@@ -6,7 +6,6 @@
 package livingIdea.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +16,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.OneToMany;
 
 /**
  *

@@ -84,6 +84,16 @@ public class ProjectImageService {
         return images; 
     }
     
+    public String getImageByProjectImageId(int id) {
+        String image = null;
+        try {
+           image = new String(Base64.encodeBase64(this.getProjectImageById(id).getImage()), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ProjectImageService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return image;
+    }
+    
     public void delete(ProjectImage image){
         repository.delete(image);
     }

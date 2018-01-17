@@ -103,14 +103,16 @@ public class ProjectsController {
     @PostMapping("/showmyfurniture")
     public ModelAndView showMyFurniture(@RequestParam("furniture") int[] checkboxValue, RedirectAttributes redirectAttributes) throws ServletException {  
         ModelAndView model = new ModelAndView("project_furniture");
+        List<String> images = new ArrayList();
         float price=0;
         for(int id : checkboxValue)
         {
             price+=  projectImageService.getProjectImageById(id).getPrice();
+            images.add(projectImageService.getImageByProjectImageId(id));
         }
         model.addObject("price",price);
         model.addObject("furnitureId", checkboxValue);
-        model.addObject("images_lists", projectImageService.getImages());  
+        model.addObject("images_lists", images);  
         return model ;
     }
    
